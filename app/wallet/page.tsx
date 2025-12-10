@@ -91,6 +91,7 @@ export default function WalletPage() {
       if (result.paymentDetails) {
         // This will be called whenever the payment is completed irrespective of transaction status
         console.log("Payment has been completed, Check for Payment Status");
+        fetchWalletBalance();
         console.log(result.paymentDetails.paymentMessage);
       }
     });
@@ -102,30 +103,28 @@ export default function WalletPage() {
     }
   }, [user, loading, router]);
 
-  useEffect(() => {
-    const fetchWalletBalance = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:2707/api/v1/wallet/balance",
-          {
-            method: "GET",
-            credentials: "include",
-            headers: {
-              "Client-Type": "web",
-            },
-          }
-        );
-        const data = await response.json();
-        if (data) {
-          // Update the user context with the new wallet balance
-          console.log("balance fetched:", data);
-          setBalance(data.available_balance + data.reserved_balance);
+  const fetchWalletBalance = async () => {
+    try {
+      const response = await axi.get("/wallet/balance");
+      const data = response.data;
+      if (data) {
+        // Update the user context with the new wallet balance
+        console.log("balance fetched:", data);
+        const newBalance = data.available_balance + data.reserved_balance;
+        if (newBalance !== balance) {
+          updateWalletBalance(newBalance);
+          setBalance(newBalance);
         }
-      } catch (error) {
-        console.error("Error fetching wallet balance:", error);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching wallet balance:", error);
+    }
+  };
+
+  useEffect(() => {
     fetchWalletBalance();
+    const interval = setInterval(fetchWalletBalance, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleRecharge = async (e: React.FormEvent) => {
