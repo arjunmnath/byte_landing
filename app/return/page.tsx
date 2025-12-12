@@ -10,12 +10,18 @@ export default function ReturnPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-serif font-black text-foreground mb-6">Return Policy</h1>
-            <p className="text-lg text-muted-foreground">Last updated: January 2025</p>
+            <p className="text-lg text-muted-foreground">Last updated: December 2025</p>
           </div>
 
           <div className="prose prose-lg max-w-none">
             <div className="space-y-8 text-muted-foreground leading-relaxed">
+
               <section>
+                <p>
+                  We do not accept any returns. If you experience any issues with your order, please contact the vendor directly to resolve your concerns.
+                </p>
+              </section>
+              {/* <section>
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Food Orders</h2>
                 <p>
                   Due to the nature of food products and health safety regulations, we generally do not accept returns
@@ -35,8 +41,8 @@ export default function ReturnPage() {
                 </ul>
                 <p>
                   Please contact us immediately at{" "}
-                  <a href="mailto:support@byte.app" className="text-primary hover:underline">
-                    support@byte.app
+                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline">
+                    thisisanshrastogi@gmail.com
                   </a>{" "}
                   or through the app. We will work with you to resolve the issue, which may include a replacement order
                   or refund.
@@ -89,12 +95,12 @@ export default function ReturnPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Contact Information</h2>
                 <p>
                   For return-related inquiries, contact us at{" "}
-                  <a href="mailto:returns@byte.app" className="text-primary hover:underline">
-                    returns@byte.app
+                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline">
+                    thisisanshrastogi@gmail.com
                   </a>{" "}
                   or call our support line during business hours.
                 </p>
-              </section>
+              </section> */}
             </div>
           </div>
         </div>

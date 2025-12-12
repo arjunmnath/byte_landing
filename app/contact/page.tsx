@@ -29,7 +29,7 @@ export default function ContactPage() {
                   For general questions, account issues, or technical support.
                 </p>
                 <p className="text-sm sm:text-base text-foreground">
-                  <a href="mailto:hello@byte.app" className="text-primary hover:underline break-all">
+                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline break-all">
                     thisisanshrastogi@gmail.com
                   </a>
                 </p>
@@ -45,7 +45,7 @@ export default function ContactPage() {
                   Interested in partnering with Byte or bringing us to your campus?
                 </p>
                 <p className="text-sm sm:text-base text-foreground">
-                  <a href="mailto:business@byte.app" className="text-primary hover:underline break-all">
+                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline break-all">
                     thisisanshrastogi@gmail.com
                   </a>
                 </p>

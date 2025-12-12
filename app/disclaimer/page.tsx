@@ -10,7 +10,7 @@ export default function DisclaimerPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-serif font-black text-foreground mb-6">Disclaimer</h1>
-            <p className="text-lg text-muted-foreground">Last updated: January 2025</p>
+            <p className="text-lg text-muted-foreground">Last updated: December 2025</p>
           </div>
 
           <div className="prose prose-lg max-w-none">
@@ -39,14 +39,13 @@ export default function DisclaimerPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Delivery and Timing</h2>
+                <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Pickup Timing</h2>
                 <p>
-                  Estimated delivery and pickup times are provided by vendors and are approximate. Byte is not
-                  responsible for delays caused by:
+                  Estimated pickup times are provided by vendors and are approximate. Byte is not responsible for delays caused by, but not limited to, the following:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>High order volumes</li>
-                  <li>Weather conditions</li>
+                  {/* <li>Weather conditions</li> */}
                   <li>Vendor preparation times</li>
                   <li>Campus events or restrictions</li>
                   <li>Technical difficulties</li>
@@ -86,7 +85,7 @@ export default function DisclaimerPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">User Responsibilities</h2>
                 <p>Users are responsible for:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Providing accurate delivery information</li>
+                  {/* <li>Providing accurate delivery information</li> */}
                   <li>Being available to receive orders</li>
                   <li>Using the service in accordance with our terms</li>
                   <li>Respecting vendor policies and campus regulations</li>
@@ -105,8 +104,8 @@ export default function DisclaimerPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Contact Us</h2>
                 <p>
                   If you have questions about this disclaimer, please contact us at{" "}
-                  <a href="mailto:legal@byte.app" className="text-primary hover:underline">
-                    legal@byte.app
+                  <a href="mailto:legal@thisisanshrastogi@gmail.com" className="text-primary hover:underline">
+                    thisisanshrastogi@gmail.com
                   </a>
                 </p>
               </section>

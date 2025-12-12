@@ -10,14 +10,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useAuth } from "@/contexts/auth-context";
 import { User, Wallet, LogOut } from "lucide-react";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout, loading } = useAuth();
+  const pathname = usePathname();
 
   return (
     <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
@@ -35,26 +38,26 @@ export function Navbar() {
             <div className="ml-10 flex items-baseline space-x-8">
               <Link
                 href="/"
-                className="text-foreground hover:text-primary transition-colors"
+                className={`hover:text-primary transition-colors ${pathname === "/" ? "text-foreground" : "text-muted-foreground"}`}
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className={`hover:text-primary transition-colors ${pathname === "/about" ? "text-foreground" : "text-muted-foreground"}`}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className={`hover:text-primary transition-colors ${pathname === "/contact" ? "text-foreground" : "text-muted-foreground"}`}
               >
                 Contact
               </Link>
               {user && (
                 <Link
                   href="/wallet"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className={`hover:text-primary transition-colors ${pathname === "/wallet" ? "text-foreground" : "text-muted-foreground"}`}
                 >
                   Wallet
                 </Link>

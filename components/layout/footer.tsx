@@ -14,8 +14,8 @@ export function Footer() {
             </p>
             <p className="text-xs sm:text-sm text-muted-foreground">
               Contact:{" "}
-              <a href="mailto:hello@byte.app" className="text-primary hover:underline">
-                hello@byte.app
+              <a href="mailto:hello@thisisanshrastogi@gmail.com" className="text-primary hover:underline">
+                thisisanshrastogi@gmail.com
               </a>
             </p>
           </div>

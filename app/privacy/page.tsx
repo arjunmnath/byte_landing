@@ -10,7 +10,7 @@ export default function PrivacyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-serif font-black text-foreground mb-6">Privacy Policy</h1>
-            <p className="text-lg text-muted-foreground">Last updated: January 2025</p>
+            <p className="text-lg text-muted-foreground">Last updated: December 2025</p>
           </div>
 
           <div className="prose prose-lg max-w-none">
@@ -79,8 +79,8 @@ export default function PrivacyPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Contact Us</h2>
                 <p>
                   If you have any questions about this Privacy Policy, please contact us at{" "}
-                  <a href="mailto:privacy@byte.app" className="text-primary hover:underline">
-                    privacy@byte.app
+                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline">
+                    thisisanshrastogi@gmail.com
                   </a>
                 </p>
               </section>

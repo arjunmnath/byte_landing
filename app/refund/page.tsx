@@ -19,8 +19,8 @@ export default function RefundPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Order Cancellations</h2>
                 <p>You may cancel your order and receive a full refund if:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>The order has not yet been confirmed by the vendor</li>
-                  <li>The cancellation is made within 5 minutes of placing the order</li>
+                  <li>The order has not yet been confirmed by the vendor, and</li>
+                  <li>The cancellation is made within 5 minutes of placing the order, and</li>
                   <li>The vendor has not started preparing your food</li>
                 </ul>
                 <p>Once food preparation has begun, orders cannot be cancelled for a refund.</p>
@@ -30,9 +30,9 @@ export default function RefundPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Refund Eligibility</h2>
                 <p>We will provide a full refund in the following situations:</p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Your order was not delivered within the estimated time frame due to vendor error</li>
-                  <li>You received the wrong order</li>
-                  <li>Your food was damaged or spoiled upon delivery</li>
+                  {/* <li>Your order was not delivered within the estimated time frame due to vendor error</li> */}
+                  {/* <li>You received the wrong order</li> */}
+                  {/* <li>Your food was damaged or spoiled upon delivery</li> */}
                   <li>The vendor cancelled your order after confirmation</li>
                   <li>Technical issues prevented order completion</li>
                 </ul>
@@ -55,12 +55,12 @@ export default function RefundPage() {
                   <li>
                     <strong>Byte Wallet:</strong> Instant refund upon approval
                   </li>
-                  <li>
+                  {/* <li>
                     <strong>Credit/Debit Cards:</strong> 3-5 business days
                   </li>
                   <li>
                     <strong>Bank Transfers:</strong> 5-7 business days
-                  </li>
+                  </li> */}
                 </ul>
               </section>
 
@@ -70,7 +70,7 @@ export default function RefundPage() {
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Orders cancelled after food preparation has begun</li>
                   <li>Personal preference or taste-related complaints</li>
-                  <li>Orders where you provided incorrect delivery information</li>
+                  {/* <li>Orders where you provided incorrect delivery information</li> */}
                   <li>Promotional credits or discount codes</li>
                 </ul>
               </section>
@@ -79,8 +79,8 @@ export default function RefundPage() {
                 <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Contact Us</h2>
                 <p>
                   For refund requests or questions about this policy, please contact us at{" "}
-                  <a href="mailto:refunds@byte.app" className="text-primary hover:underline">
-                    refunds@byte.app
+                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline">
+                    thisisanshrastogi@gmail.com
                   </a>
                 </p>
               </section>

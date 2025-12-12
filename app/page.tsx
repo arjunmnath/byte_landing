@@ -20,7 +20,7 @@ export default function HomePage() {
             </p>
             <Button
               size="lg"
-              className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
+              className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto cursor-pointer"
             >
               Get Started
             </Button>
@@ -77,7 +77,7 @@ export default function HomePage() {
                 Enjoy Your Food
               </h3>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Enjoy quick delivery or pickup from your favorite campus
+                Enjoy quick pickup from your favorite campus
                 canteens.
               </p>
             </div>
