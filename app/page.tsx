@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
@@ -40,47 +45,77 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center px-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <span className="text-xl sm:text-2xl font-serif font-bold text-primary-foreground">
-                  1
-                </span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-3 sm:mb-4">
-                Add Money to Your Wallet
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Add money to your Byte wallet securely and manage your balance
-                with ease.
-              </p>
-            </div>
-            <div className="text-center px-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <span className="text-xl sm:text-2xl font-serif font-bold text-secondary-foreground">
-                  2
-                </span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-3 sm:mb-4">
-                Place Your Order
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Place an order from the different canteens available on campus.
-              </p>
-            </div>
-            <div className="text-center px-4 sm:col-span-2 md:col-span-1">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <span className="text-xl sm:text-2xl font-serif font-bold text-accent-foreground">
-                  3
-                </span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-3 sm:mb-4">
-                Enjoy Your Food
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Enjoy quick pickup from your favorite campus
-                canteens.
-              </p>
-            </div>
+            <Card className="group text-center px-4 py-6 rounded-4xl bg-secondary text-secondary-foreground transition-all hover:bg-accent hover:text-accent-foreground hover:-translate-y-1 ">
+              <CardContent className="text-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 bg-secondary text-secondary-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <span className="text-xl sm:text-2xl font-serif font-bold ">
+                    1
+                  </span>
+                </div>
+                <CardTitle className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-3 sm:mb-4">
+                  Add Money to Your Wallet
+                </CardTitle>
+                <CardDescription className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Add money to your Byte wallet securely and manage your balance
+                  with ease.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card
+              className="
+                group
+                bg-secondary
+                text-secondary-foreground
+                hover:bg-accent
+                hover:text-accent-foreground
+                transition-all
+                hover:-translate-y-1
+              "
+            >
+              <CardContent className="text-center">
+                <div
+                  className="
+                    w-14 h-14 sm:w-16 sm:h-16
+                    rounded-full
+                    flex items-center justify-center
+                    mx-auto mb-4 sm:mb-6
+                    bg-secondary
+                    text-secondary-foreground
+                    transition-colors
+                    group-hover:bg-primary
+                    group-hover:text-primary-foreground
+                  "
+                >
+                  <span className="text-xl sm:text-2xl font-serif font-bold">
+                    2
+                  </span>
+                </div>
+
+                <CardTitle className="text-lg sm:text-xl font-serif">
+                  Place Your Order
+                </CardTitle>
+
+                <CardDescription className="mt-2">
+                  Place an order from the different canteens available on
+                  campus.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="group text-center px-4 py-6 rounded-4xl bg-secondary text-secondary-foreground transition-all hover:bg-accent hover:text-accent-foreground hover:-translate-y-1 ">
+              <CardContent className="text-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 bg-secondary text-secondary-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <span className="text-xl sm:text-2xl font-serif font-bold ">
+                    3
+                  </span>
+                </div>
+                <CardTitle className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-3 sm:mb-4">
+                  Enjoy Your Food
+                </CardTitle>
+                <CardDescription className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Enjoy quick pickup from your favorite campus canteens.
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
