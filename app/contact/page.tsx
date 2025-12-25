@@ -1,21 +1,22 @@
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="py-12 sm:py-16 lg:py-20">
+      <main className="py-12 sm:py-16 lg:py-20 my-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-foreground mb-4 sm:mb-6">
               Contact Us
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-              Have questions or need support? We're here to help make your Byte experience amazing.
+              Have questions or need support? We're here to help make your Byte
+              experience amazing.
             </p>
           </div>
 
@@ -29,7 +30,10 @@ export default function ContactPage() {
                   For general questions, account issues, or technical support.
                 </p>
                 <p className="text-sm sm:text-base text-foreground">
-                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline break-all">
+                  <a
+                    href="mailto:thisisanshrastogi@gmail.com"
+                    className="text-primary hover:underline break-all"
+                  >
                     thisisanshrastogi@gmail.com
                   </a>
                 </p>
@@ -42,10 +46,14 @@ export default function ContactPage() {
                   Business Inquiries
                 </h3>
                 <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
-                  Interested in partnering with Byte or bringing us to your campus?
+                  Interested in partnering with Byte or bringing us to your
+                  campus?
                 </p>
                 <p className="text-sm sm:text-base text-foreground">
-                  <a href="mailto:thisisanshrastogi@gmail.com" className="text-primary hover:underline break-all">
+                  <a
+                    href="mailto:thisisanshrastogi@gmail.com"
+                    className="text-primary hover:underline break-all"
+                  >
                     thisisanshrastogi@gmail.com
                   </a>
                 </p>
@@ -61,7 +69,10 @@ export default function ContactPage() {
               <form className="space-y-4 sm:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Name
                     </label>
                     <input
@@ -72,7 +83,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email
                     </label>
                     <input
@@ -84,7 +98,10 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Subject
                   </label>
                   <input
@@ -95,7 +112,10 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Message
                   </label>
                   <textarea
@@ -106,7 +126,10 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="text-center">
-                  <Button size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
+                  >
                     Send Message
                   </Button>
                 </div>
@@ -118,5 +141,5 @@ export default function ContactPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

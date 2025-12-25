@@ -172,7 +172,7 @@ export default function WalletPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 my-20">
         <div className="max-w-screen mx-auto grid lg:grid-cols-2 gap-8">
           {/* Wallet Card */}
           <div className="relative w-full max-w-md mx-auto place-content-center">

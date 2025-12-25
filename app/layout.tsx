@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/components/ClientProvider";
+import IntroShutter from "@/components/ui/intro-shutter";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -35,6 +36,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans">
+        <IntroShutter />
+
         <ClientProviders>{children}</ClientProviders>
       </body>
     </html>

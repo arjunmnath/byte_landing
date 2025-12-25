@@ -6,7 +6,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="py-20">
+      <main className="py-20 my-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-serif font-black text-foreground mb-6">

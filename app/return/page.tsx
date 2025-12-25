@@ -1,24 +1,29 @@
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 export default function ReturnPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="py-20">
+      <main className="py-20 my-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif font-black text-foreground mb-6">Return Policy</h1>
-            <p className="text-lg text-muted-foreground">Last updated: December 2025</p>
+            <h1 className="text-4xl md:text-5xl font-serif font-black text-foreground mb-6">
+              Return Policy
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Last updated: December 2025
+            </p>
           </div>
 
           <div className="prose prose-lg max-w-none">
             <div className="space-y-8 text-muted-foreground leading-relaxed">
-
               <section>
                 <p>
-                  We do not accept any returns. If you experience any issues with your order, please contact the vendor directly to resolve your concerns.
+                  We do not accept any returns. If you experience any issues
+                  with your order, please contact the vendor directly to resolve
+                  your concerns.
                 </p>
               </section>
               {/* <section>
@@ -108,5 +113,5 @@ export default function ReturnPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

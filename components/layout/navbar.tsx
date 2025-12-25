@@ -15,57 +15,91 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { useAuth } from "@/contexts/auth-context";
 import { User, Wallet, LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
-import path from "path";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const { user, logout, loading } = useAuth();
   const pathname = usePathname();
 
+  // ---- hide/show on scroll ----
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setHidden(true); // scrolling down
+      } else {
+        setHidden(false); // scrolling up
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const linkClass = (path: string) =>
+    `transition-colors ${
+      pathname === path
+        ? "text-foreground"
+        : "text-muted-foreground hover:text-primary"
+    }`;
+
   return (
-    <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className="text-2xl font-serif font-black text-foreground"
-            >
-              Byte
+    <div
+      className={`
+        fixed top-4 left-0 right-0 z-[90]
+        transition-transform duration-300 ease-out
+        ${hidden ? "-translate-y-24" : "translate-y-0"}
+      `}
+    >
+      <nav
+        className="
+          mx-auto
+          max-w-5xl
+          rounded-2xl
+          border border-border
+          bg-card/70
+          backdrop-blur-md
+          shadow-[0_8px_30px_-12px_rgba(0,0,0,0.25)]
+        "
+      >
+        {/* main bar */}
+        <div className="flex h-16 items-center justify-between px-6  md:px-8">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-2xl font-serif font-black text-foreground"
+          >
+            Byte
+          </Link>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/" className={linkClass("/")}>
+              Home
             </Link>
+            <Link href="/about" className={linkClass("/about")}>
+              About
+            </Link>
+            <Link href="/contact" className={linkClass("/contact")}>
+              Contact
+            </Link>
+            {user && (
+              <Link href="/wallet" className={linkClass("/wallet")}>
+                Wallet
+              </Link>
+            )}
           </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <Link
-                href="/"
-                className={`hover:text-primary transition-colors ${pathname === "/" ? "text-foreground" : "text-muted-foreground"}`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className={`hover:text-primary transition-colors ${pathname === "/about" ? "text-foreground" : "text-muted-foreground"}`}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className={`hover:text-primary transition-colors ${pathname === "/contact" ? "text-foreground" : "text-muted-foreground"}`}
-              >
-                Contact
-              </Link>
-              {user && (
-                <Link
-                  href="/wallet"
-                  className={`hover:text-primary transition-colors ${pathname === "/wallet" ? "text-foreground" : "text-muted-foreground"}`}
-                >
-                  Wallet
-                </Link>
-              )}
-            </div>
-          </div>
-          <div className="flex items-center space-x-2">
+
+          {/* Right side */}
+          <div className="flex items-center gap-2">
             <ThemeToggle />
+
             {!loading && (
               <>
                 {user ? (
@@ -75,49 +109,49 @@ export function Navbar() {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="flex items-center space-x-2"
+                          className="flex items-center gap-2"
                         >
-                          <User className="w-4 h-4" />
+                          <User className="h-4 w-4" />
                           <span className="text-sm">{user.name}</span>
                         </Button>
                       </DropdownMenuTrigger>
+
                       <DropdownMenuContent align="end" className="w-56">
                         <DropdownMenuLabel className="font-normal">
                           <div className="flex flex-col space-y-1">
-                            <p className="text-sm font-medium leading-none">
-                              {user.name}
-                            </p>
-                            <p className="text-xs leading-none text-muted-foreground">
+                            <p className="text-sm font-medium">{user.name}</p>
+                            <p className="text-xs text-muted-foreground">
                               {user.email}
                             </p>
                           </div>
                         </DropdownMenuLabel>
+
                         <DropdownMenuSeparator />
+
                         <DropdownMenuItem asChild>
                           <Link
                             href="/wallet"
-                            className="flex items-center space-x-2 cursor-pointer"
+                            className="flex items-center gap-2"
                           >
-                            <Wallet className="w-4 h-4" />
-                            <span>
-                              Wallet Balance: ₹
-                              {user.walletBalance?.toFixed(0) || "0"}
-                            </span>
+                            <Wallet className="h-4 w-4" />
+                            Wallet: ₹{user.walletBalance?.toFixed(0) || "0"}
                           </Link>
                         </DropdownMenuItem>
+
                         <DropdownMenuSeparator />
+
                         <DropdownMenuItem
                           onClick={logout}
-                          className="flex items-center space-x-2 cursor-pointer"
+                          className="flex items-center gap-2 cursor-pointer"
                         >
-                          <LogOut className="w-4 h-4" />
-                          <span>Logout</span>
+                          <LogOut className="h-4 w-4" />
+                          Logout
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
                 ) : (
-                  <div className="hidden md:flex items-center space-x-2">
+                  <div className="hidden md:block">
                     <Link href="/login">
                       <Button variant="outline" size="sm">
                         Login
@@ -127,6 +161,8 @@ export function Navbar() {
                 )}
               </>
             )}
+
+            {/* Mobile menu button */}
             <div className="md:hidden">
               <Button
                 variant="ghost"
@@ -161,66 +197,66 @@ export function Navbar() {
           </div>
         </div>
 
+        {/* Mobile dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-border bg-card/95 backdrop-blur-sm">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="md:hidden mt-2 mb-4 mx-3 rounded-xl border border-border bg-card/95 backdrop-blur-md">
+            <div className="px-4 py-4 space-y-2">
               <Link
                 href="/"
-                className="block px-3 py-2 text-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsMenuOpen(false)}
+                className="block rounded-md px-3 py-2 hover:bg-accent/50"
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="block px-3 py-2 text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsMenuOpen(false)}
+                className="block rounded-md px-3 py-2 hover:bg-accent/50"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="block px-3 py-2 text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
                 onClick={() => setIsMenuOpen(false)}
+                className="block rounded-md px-3 py-2 hover:bg-accent/50"
               >
                 Contact
               </Link>
-              {!loading && (
+
+              {!loading && user && (
                 <>
-                  {user ? (
-                    <>
-                      <Link
-                        href="/wallet"
-                        className="block px-3 py-2 text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        Wallet (₹{user.walletBalance?.toFixed(0) || "0"})
-                      </Link>
-                      <button
-                        onClick={() => {
-                          logout();
-                          setIsMenuOpen(false);
-                        }}
-                        className="block w-full text-left px-3 py-2 text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
-                      >
-                        Logout
-                      </button>
-                    </>
-                  ) : (
-                    <Link
-                      href="/login"
-                      className="block px-3 py-2 text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Login
-                    </Link>
-                  )}
+                  <Link
+                    href="/wallet"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block rounded-md px-3 py-2 hover:bg-accent/50"
+                  >
+                    Wallet (₹{user.walletBalance?.toFixed(0) || "0"})
+                  </Link>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="block w-full text-left rounded-md px-3 py-2 hover:bg-accent/50"
+                  >
+                    Logout
+                  </button>
                 </>
+              )}
+
+              {!loading && !user && (
+                <Link
+                  href="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block rounded-md px-3 py-2 hover:bg-accent/50"
+                >
+                  Login
+                </Link>
               )}
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

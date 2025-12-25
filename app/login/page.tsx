@@ -52,11 +52,11 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
 
-      <main className="flex-grow flex items-center justify-center px-4 py-16">
+      <main className="flex-grow flex items-center justify-center px-4 py-16 my-10">
         <div className="w-full max-w-md space-y-6">
-          <Card className="shadow-lg border-0 bg-card">
+          <Card className="shadow-xl rounded-sm border-none my-4 bg-card">
             <CardHeader className="text-center space-y-2">
-              <CardTitle className="text-3xl font-bold text-primary">
+              <CardTitle className="text-3xl font-extrabold text-primary">
                 Welcome to Byte
               </CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -71,7 +71,9 @@ export default function LoginPage() {
               )}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label className="mb-1 px-1" htmlFor="email">
+                    Email
+                  </Label>
                   <Input
                     id="email"
                     type="email"
@@ -82,7 +84,9 @@ export default function LoginPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="password">Password</Label>
+                  <Label className="mb-1 px-1" htmlFor="password">
+                    Password
+                  </Label>
                   <Input
                     id="password"
                     type="password"

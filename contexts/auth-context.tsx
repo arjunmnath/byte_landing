@@ -65,16 +65,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     try {
-      await fetch("/api/logout", {
-        method: "POST",
-        headers: {
-          "Client-Type": "web",
-        },
-      });
+      const response = await axi.post("/auth/logout");
+      if (response.status === 200) {
+        setUser(null);
+      }
     } catch (error) {
       console.error("Logout failed:", error);
-    } finally {
-      setUser(null);
     }
   };
 

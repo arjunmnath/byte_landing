@@ -7,34 +7,36 @@ import {
 } from "@/components/ui/card";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import StickersPage from "@/components/ui/stickers";
+import IntroShutter from "@/components/ui/intro-shutter";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-
+      {/* Bg stickers */}
+      {/* <Stickers /> */}
+      {/* <StickersPage /> */}
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-foreground mb-4 sm:mb-6 leading-tight">
-              Order Food Seamlessly in Your College
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
-              Byte lets you order and pay at the canteen with just a few taps.
-            </p>
-            <Button
-              size="lg"
-              className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto cursor-pointer"
-            >
-              Get Started
-            </Button>
-          </div>
+      <section className="min-h-screen relative  flex justify-center items-center gap-10 lg:py-40 z-40  bg-primary-foreground/40">
+        <div className="h-full gap-10 md:gap-1 flex flex-col justify-evenly items-center mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-foreground mb-4 sm:mb-6 leading-tight">
+            Order Food Seamlessly in Your College
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
+            Byte lets you order and pay at the canteen with just a few taps.
+          </p>
+          <Button
+            size="lg"
+            className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-lg shadow-lg hover:shadow-xl transition-all w-full sm:w-auto cursor-pointer"
+          >
+            Get Started
+          </Button>
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-card/30">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-card/30 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground mb-3 sm:mb-4">
