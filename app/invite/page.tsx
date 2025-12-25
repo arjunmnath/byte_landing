@@ -45,7 +45,7 @@ const BetaApplicationPage = () => {
     transition-all duration-200
   `;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -63,7 +63,7 @@ const BetaApplicationPage = () => {
           "entry.1532332021": formData.platform,
           "entry.1861519418": formData.reason,
         }),
-      },
+      }
     )
       .then(() => {
         setIsSuccess(true);
