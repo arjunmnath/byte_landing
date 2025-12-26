@@ -30,7 +30,7 @@ export default function ReturnPage() {
   return (
     <div className="min-h-screen bg-[#FFFBF7] dark:bg-background selection:bg-orange-100 dark:selection:bg-primary/30 font-sans">
       <Navbar />
-      <main className="py-20 lg:py-32">
+      <main className="py-20 mt-20 lg:py-32">
         <motion.div
           className="max-w-3xl mx-auto px-6 lg:px-8"
           variants={containerVariants}

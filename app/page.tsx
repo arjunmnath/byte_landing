@@ -32,7 +32,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative py-20 mt-20 lg:py-32 overflow-hidden">
         {/* Background decorative blob (Light mode only) */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#FFF0E6] rounded-full blur-3xl opacity-50 -z-10 pointer-events-none dark:opacity-0"></div>
 

@@ -118,15 +118,24 @@ export function Navbar() {
                           <div className="w-6 h-6 bg-[#FFF0E6] rounded-full flex items-center justify-center text-[#FF9E75] dark:bg-muted dark:text-foreground">
                             <User className="h-3.5 w-3.5" />
                           </div>
-                          <span className="text-sm">{user.name}</span>
+                          {/* Fallback for empty name */}
+                          <span className="text-sm truncate max-w-[100px]">
+                            {user.name || "User"}
+                          </span>
                         </Button>
                       </DropdownMenuTrigger>
 
                       <DropdownMenuContent align="end" className={`w-64 ${clayDropdown}`}>
                         <DropdownMenuLabel className="font-normal px-4 pt-4">
                           <div className="flex flex-col space-y-1">
-                            <p className={`text-sm ${textBrand}`}>{user.name}</p>
-                            <p className="text-xs text-[#9C8C84] font-bold">{user.email}</p>
+                            {/* Fallback for empty name */}
+                            <p className={`text-sm ${textBrand} truncate`}>
+                              {user.name || "User"}
+                            </p>
+                            {/* Fallback for empty email */}
+                            <p className="text-xs text-[#9C8C84] font-bold truncate">
+                              {user.email || "No email linked"}
+                            </p>
                           </div>
                         </DropdownMenuLabel>
 

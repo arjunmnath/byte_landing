@@ -169,7 +169,7 @@ export default function WalletPage() {
     <div className="min-h-screen bg-[#FFFBF7] dark:bg-background selection:bg-orange-100 dark:selection:bg-primary/30 font-sans">
       <Navbar />
 
-      <main className="container mx-auto px-4 py-20 lg:py-24 min-h-[90vh]">
+      <main className="container mx-auto px-4 py-20 mt-20 lg:py-24 min-h-[90vh]">
         <motion.div
           className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}

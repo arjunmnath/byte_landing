@@ -54,6 +54,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li key="join_beta_testing">
+                <Link
+                  href="/invite"
+                  className={`text-sm font-bold ${textBase} ${hoverLink}`}
+                >
+                  Become a Beta Tester
+                </Link>
+              </li>
             </ul>
           </div>
 
