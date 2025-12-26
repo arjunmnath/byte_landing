@@ -82,6 +82,7 @@
   /* Added custom font family mappings */
   --font-sans: "Open Sans", sans-serif;
   --font-serif: "Montserrat", serif;
+  /* --font-serif: "Modak", serif; */
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);

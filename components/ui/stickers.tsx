@@ -58,10 +58,10 @@ const Sticker = ({ Icon, index }: StickerProps) => {
 
   return (
     <div
-      className="flex items-center justify-center opacity-30"
+      className="flex  text-white items-center justify-center opacity-60"
       style={{ transform: `rotate(${rotation}deg)` }}
     >
-      <Icon size={30} strokeWidth={1.25} />
+      <Icon size={30} strokeWidth={1.75} />
     </div>
   );
 };
@@ -70,7 +70,7 @@ const Sticker = ({ Icon, index }: StickerProps) => {
 
 export default function StickersPage() {
   return (
-    <div className="bg-background w-full h-lvh overflow-hidden absolute z-20">
+    <div className="dark:bg-background bg-primary w-full h-lvh overflow-hidden absolute z-20">
       <div className="grid grid-cols-10 grid-rows-6 w-full h-full ">
         {Array.from({ length: 60 }).map((_, i) => {
           const Icon = foodList[i % foodList.length];

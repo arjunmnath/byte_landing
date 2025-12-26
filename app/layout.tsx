@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Modak, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/components/ClientProvider";
 import IntroShutter from "@/components/ui/intro-shutter";
@@ -10,6 +10,13 @@ const montserrat = Montserrat({
   display: "swap",
   variable: "--font-montserrat",
   weight: ["400", "600", "700", "900"],
+});
+
+const modak = Modak({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-modak",
+  weight: ["400"],
 });
 
 const openSans = Open_Sans({

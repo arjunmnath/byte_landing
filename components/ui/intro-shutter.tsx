@@ -45,17 +45,17 @@ export default function IntroShutter() {
           <motion.h1
             initial={{ opacity: 1, y: 0 }}
             animate={{
-              opacity: [1, 0.5, 1],
+              opacity: [1, 0.2, 0.2],
               y: -100,
             }}
             transition={{
-              duration: 0.7,
+              duration: 1.1,
               ease: "easeInOut",
               repeat: Infinity,
               repeatType: "loop",
             }}
             exit={{ opacity: 0, y: -200 }}
-            className="relative text-4xl sm:text-7xl font-serif  tracking-wide font-black z-40"
+            className="relative font-extrabold text-4xl text-white sm:text-7xl px-10 rounded-2xl py-20 bg-primary/90 dark:bg-background/90 font-serif  tracking-wide  z-40"
           >
             Byte
           </motion.h1>
