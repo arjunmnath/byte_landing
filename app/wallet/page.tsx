@@ -5,22 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { load } from "@cashfreepayments/cashfree-js";
 import CountUp from "react-countup";
+import { motion, Variants } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
-import { Wallet, Plus, CreditCard, TrendingUp, Shield } from "lucide-react";
+import { Wallet, Plus, CreditCard, TrendingUp, Shield, AlertCircle, CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
 import axi from "@/lib/axi";
 
@@ -35,6 +26,25 @@ export default function WalletPage() {
   const [messageType, setMessageType] = useState<"success" | "error" | "">("");
 
   const cashfreeRef = useRef<any>(null);
+
+  // --- CLAY TOKENS ---
+  const clayCard = "bg-white shadow-[8px_8px_16px_rgba(214,198,186,0.5),_-4px_-4px_12px_rgba(255,255,255,0.8)] rounded-[2rem] border border-transparent dark:bg-card dark:border-border dark:shadow-none";
+  const clayInset = "bg-[#F5EFE8] shadow-[inset_4px_4px_8px_rgba(204,190,178,0.4),_inset_-4px_-4px_8px_rgba(255,255,255,0.8)] rounded-[1rem] border-none text-[#5C4D45] placeholder-[#B0A69E] focus:ring-0 focus:outline-none transition-all focus:shadow-[inset_6px_6px_12px_rgba(204,190,178,0.6),_inset_-6px_-6px_12px_rgba(255,255,255,1)] dark:bg-muted dark:shadow-none dark:text-foreground";
+  const clayBtn = "bg-[#FF9E75] text-white shadow-[6px_6px_12px_rgba(255,158,117,0.4),_-2px_-2px_6px_rgba(255,255,255,0.4)] hover:bg-[#FF9E75]/90 hover:shadow-lg active:translate-y-[2px] active:shadow-none transition-all dark:bg-primary dark:text-primary-foreground dark:shadow-none";
+
+  const textHeading = "text-[#5C4D45] dark:text-foreground font-black tracking-tight";
+  const textBody = "text-[#9C8C84] dark:text-muted-foreground font-bold";
+
+  // --- ANIMATION VARIANTS ---
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+  };
+
+  const clayPopVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 15 } },
+  };
 
   /* -------------------- Init Cashfree SDK (ONCE) -------------------- */
   useEffect(() => {
@@ -156,42 +166,51 @@ export default function WalletPage() {
   if (loading || !user) return null;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#FFFBF7] dark:bg-background selection:bg-orange-100 dark:selection:bg-primary/30 font-sans">
       <Navbar />
 
-      <main className="container mx-auto px-4 py-16 h-screen my-20">
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <main className="container mx-auto px-4 py-20 mt-20 lg:py-24 min-h-[90vh]">
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* ---------------- Wallet Card ---------------- */}
-          <div className="relative w-full max-w-md mx-auto">
-            <div className="bg-card border rounded-3xl shadow-lg overflow-hidden">
-              <div className="p-6 space-y-6">
+          <motion.div
+            variants={clayPopVariants}
+            className="relative w-full max-w-md mx-auto"
+          >
+            {/* Using Clay Card style instead of Card component */}
+            <div className={`${clayCard} overflow-hidden h-full flex flex-col`}>
+              <div className="p-8 space-y-8 flex-1">
                 <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center">
-                      <Wallet className="w-5 h-5 text-primary-foreground" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-[#FFF0E6] rounded-[1rem] flex items-center justify-center text-[#FF9E75] dark:bg-primary/10 dark:text-primary shadow-sm">
+                      <Wallet className="w-7 h-7" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Byte Wallet</h3>
-                      <p className="text-xs text-muted-foreground">
+                      <h3 className={`text-xl ${textHeading}`}>Byte Wallet</h3>
+                      <p className={`text-xs uppercase tracking-wider ${textBody}`}>
                         Digital Payments
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1">
-                    <Shield className="w-4 h-4 text-accent" />
-                    <span className="text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#EAF8E6] rounded-full text-[#4CAF50] dark:bg-green-900/20 dark:text-green-400">
+                    <Shield className="w-3.5 h-3.5" />
+                    <span className="text-xs font-black uppercase tracking-wide">
                       Secured
                     </span>
                   </div>
                 </div>
 
                 <div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className={`text-sm font-black uppercase tracking-wide mb-1 ${textBody}`}>
                     Available Balance
                   </p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-bold">
+                  <div className="flex items-baseline gap-3">
+                    <span className={`text-5xl font-black ${textHeading}`}>
                       <CountUp
                         start={0}
                         end={balance}
@@ -200,42 +219,42 @@ export default function WalletPage() {
                         prefix="₹ "
                       />
                     </span>
-                    <div className="flex items-center gap-1 text-accent">
-                      <TrendingUp className="w-3 h-3" />
-                      <span className="text-xs font-medium">Active</span>
-                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 mt-2 text-[#FF9E75] dark:text-primary">
+                    <TrendingUp className="w-4 h-4" />
+                    <span className="text-xs font-black uppercase tracking-wide">Active</span>
                   </div>
                 </div>
 
-                <div className="bg-muted rounded-2xl p-4 space-y-3">
+                <div className="bg-[#F5EFE8] dark:bg-muted/50 rounded-[1.5rem] p-6 space-y-4 mt-auto">
                   <div className="flex justify-between items-center">
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-wide">
+                      <p className={`text-xs uppercase tracking-wide mb-1 opacity-70 ${textBody}`}>
                         Account
                       </p>
-                      <p className="text-sm font-medium truncate max-w-40">
+                      <p className={`text-sm font-black truncate max-w-40 text-[#5C4D45] dark:text-foreground`}>
                         {user.email}
                       </p>
                     </div>
 
                     <div className="text-right">
-                      <p className="text-xs text-muted-foreground uppercase tracking-wide">
+                      <p className={`text-xs uppercase tracking-wide mb-1 opacity-70 ${textBody}`}>
                         ID
                       </p>
-                      <p className="text-sm font-mono">{maskedId}</p>
+                      <p className="text-sm font-black font-mono text-[#5C4D45] dark:text-foreground">{maskedId}</p>
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center pt-2 border-t border-border">
+                  <div className="flex justify-between items-center pt-4 border-t border-[#D6C6BA]/20 dark:border-border">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-accent rounded-full" />
-                      <span className="text-xs text-muted-foreground">
+                      <div className="w-2 h-2 bg-[#FF9E75] rounded-full" />
+                      <span className={`text-xs font-bold ${textBody}`}>
                         Instant Payments
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-primary rounded-full" />
-                      <span className="text-xs text-muted-foreground">
+                      <div className="w-2 h-2 bg-[#5C4D45] dark:bg-foreground rounded-full" />
+                      <span className={`text-xs font-bold ${textBody}`}>
                         24/7 Support
                       </span>
                     </div>
@@ -243,81 +262,98 @@ export default function WalletPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* ---------------- Recharge Card ---------------- */}
-          <Card className="h-fit shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Plus className="w-5 h-5" />
+          <motion.div
+            variants={clayPopVariants}
+            className={`w-full max-w-md mx-auto h-fit ${clayCard} p-8`}
+          >
+            <div className="mb-8">
+              <h2 className={`text-2xl flex items-center gap-3 mb-2 ${textHeading}`}>
+                <div className="w-10 h-10 bg-[#5C4D45] rounded-full flex items-center justify-center text-white dark:bg-primary dark:text-primary-foreground">
+                  <Plus className="w-5 h-5" strokeWidth={3} />
+                </div>
                 Recharge Wallet
-              </CardTitle>
-              <CardDescription>Add money to your Byte wallet</CardDescription>
-            </CardHeader>
+              </h2>
+              <p className={`text-sm ${textBody}`}>Add money to your Byte wallet instantly.</p>
+            </div>
 
-            <CardContent>
-              <form onSubmit={handleRecharge} className="space-y-6">
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">
-                    Enter Amount (₹)
-                  </Label>
-                  <Input
+            <form onSubmit={handleRecharge} className="space-y-8">
+              <div className="space-y-3">
+                <label className={`block text-xs font-black uppercase tracking-wide ml-1 ${textBody}`}>
+                  Enter Amount (₹)
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9C8C84] font-black text-lg">₹</span>
+                  <input
                     type="number"
                     min={1}
                     value={amount}
                     onChange={(e) => {
                       setAmount(e.target.value);
-
                       clearPaymentAttemptId();
                     }}
-                    className="h-12 text-lg"
+                    className={`w-full pl-8 pr-4 py-5 text-xl font-black ${clayInset}`}
+                    placeholder="0"
                     required
                   />
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">Quick Add</Label>
-                  <div className="grid grid-cols-5 gap-2">
-                    {quickAmounts.map((q) => (
-                      <Button
-                        key={q}
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        className="h-10"
-                        onClick={() => {
-                          setAmount(q.toString());
-                          clearPaymentAttemptId();
-                        }}
-                      >
-                        ₹{q}
-                      </Button>
-                    ))}
-                  </div>
+              <div className="space-y-3">
+                <label className={`block text-xs font-black uppercase tracking-wide ml-1 ${textBody}`}>Quick Add</label>
+                <div className="grid grid-cols-5 gap-3">
+                  {quickAmounts.map((q) => (
+                    <button
+                      key={q}
+                      type="button"
+                      onClick={() => {
+                        setAmount(q.toString());
+                        clearPaymentAttemptId();
+                      }}
+                      className={`py-2 rounded-[0.8rem] text-sm font-black transition-all
+                        ${amount === q.toString()
+                          ? "bg-[#5C4D45] text-white shadow-md scale-105 dark:bg-primary"
+                          : "bg-[#F5EFE8] text-[#9C8C84] hover:bg-[#E8DED5] dark:bg-muted dark:text-muted-foreground dark:hover:bg-accent"}
+                      `}
+                    >
+                      ₹{q}
+                    </button>
+                  ))}
                 </div>
+              </div>
 
-                {message && (
-                  <Alert
-                    variant={
-                      messageType === "error" ? "destructive" : "default"
-                    }
-                  >
-                    <AlertDescription>{message}</AlertDescription>
-                  </Alert>
-                )}
-
-                <Button
-                  type="submit"
-                  disabled={isPaying}
-                  className="w-full h-12 bg-primary hover:bg-primary/90 hover:cursor-pointer font-medium"
+              {message && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`p-4 rounded-[1rem] flex items-center gap-3 font-bold text-sm ${messageType === "error"
+                    ? "bg-[#FFF0F0] text-[#FF6B6B]"
+                    : "bg-[#EAF8E6] text-[#4CAF50]"
+                    }`}
                 >
-                  <CreditCard className="w-4 h-4 mr-2" />
-                  {isPaying ? "Processing..." : "Add Money"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
+                  {messageType === "error" ? <AlertCircle size={18} /> : <CheckCircle2 size={18} />}
+                  {message}
+                </motion.div>
+              )}
+
+              <Button
+                type="submit"
+                disabled={isPaying}
+                className={`w-full h-14 rounded-[1.2rem] text-base font-black uppercase tracking-wide flex items-center justify-center gap-2 ${clayBtn} disabled:opacity-70`}
+              >
+                {isPaying ? (
+                  "Processing..."
+                ) : (
+                  <>
+                    Add Money <CreditCard className="w-5 h-5" strokeWidth={2.5} />
+                  </>
+                )}
+              </Button>
+            </form>
+          </motion.div>
+        </motion.div>
       </main>
 
       <Footer />
