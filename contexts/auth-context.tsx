@@ -79,7 +79,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         password,
         role: "student",
       };
-      const response = await axi.post(`/auth/signup`, registerBody);
+      const response = await axi.post(`/auth/signup?token=${token}`, registerBody);
       if (response.status === 200) {
         setUser(response.data);
         return true;
