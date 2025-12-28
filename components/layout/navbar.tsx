@@ -24,14 +24,19 @@ export function Navbar() {
 
   // --- CLAY TOKENS ---
   // Glassmorphic Clay Container
-  const navGlass = "bg-[#FFFBF7]/90 backdrop-blur-md border border-[#F5EFE8] shadow-[8px_8px_16px_rgba(214,198,186,0.25),_-4px_-4px_12px_rgba(255,255,255,0.8)] dark:bg-card/80 dark:border-border dark:shadow-none";
+  const navGlass =
+    "bg-[#FFFBF7]/90 backdrop-blur-md border border-[#F5EFE8] shadow-[8px_8px_16px_rgba(214,198,186,0.25),_-4px_-4px_12px_rgba(255,255,255,0.8)] dark:bg-card/80 dark:border-border dark:shadow-none";
 
-  const textBrand = "text-[#5C4D45] dark:text-foreground font-black tracking-tight";
-  const textLink = "text-[#9C8C84] hover:text-[#FF9E75] font-bold transition-colors dark:text-muted-foreground dark:hover:text-primary";
+  const textBrand =
+    "text-[#5C4D45] dark:text-foreground font-black tracking-tight";
+  const textLink =
+    "text-[#9C8C84] hover:text-[#FF9E75] font-bold transition-colors dark:text-muted-foreground dark:hover:text-primary";
   const textActive = "text-[#5C4D45] dark:text-foreground font-black";
 
-  const clayBtn = "bg-[#FF9E75] text-white shadow-[4px_4px_8px_rgba(255,158,117,0.4),_-2px_-2px_4px_rgba(255,255,255,0.4)] hover:bg-[#FF9E75]/90 hover:shadow-lg active:translate-y-[1px] active:shadow-none transition-all dark:bg-primary dark:text-primary-foreground dark:shadow-none";
-  const clayDropdown = "bg-white border-none shadow-[8px_8px_16px_rgba(214,198,186,0.5),_-4px_-4px_12px_rgba(255,255,255,0.8)] rounded-[1.5rem] p-2 dark:bg-popover dark:border dark:border-border dark:shadow-none dark:rounded-md";
+  const clayBtn =
+    "bg-[#FF9E75] text-white shadow-[4px_4px_8px_rgba(255,158,117,0.4),_-2px_-2px_4px_rgba(255,255,255,0.4)] hover:bg-[#FF9E75]/90 hover:shadow-lg active:translate-y-[1px] active:shadow-none transition-all dark:bg-primary dark:text-primary-foreground dark:shadow-none";
+  const clayDropdown =
+    "bg-white border-none shadow-[8px_8px_16px_rgba(214,198,186,0.5),_-4px_-4px_12px_rgba(255,255,255,0.8)] rounded-[1.5rem] p-2 dark:bg-popover dark:border dark:border-border dark:shadow-none dark:rounded-md";
 
   // ---- hide/show on scroll ----
   useEffect(() => {
@@ -69,14 +74,18 @@ export function Navbar() {
       >
         {/* Main Bar */}
         <div className="flex h-16 items-center justify-between px-6 md:px-8">
-
           {/* Logo */}
-          <Link
-            href="/"
-            className={`text-2xl font-sans ${textBrand} flex items-center gap-2`}
-          >
-            <span className="w-2 h-2 rounded-full bg-[#FF9E75] mb-1"></span>
-            Byte
+          <Link href="/" className="flex items-center gap-2">
+            <img
+              src="/byte-logo.png"
+              alt="Byte"
+              className="w-20 h-14 object-cover -ml-1 -mb-2 block dark:hidden"
+            />
+            <img
+              src="/byte-logo-dark.png"
+              alt="Byte Dark"
+              className="w-24 h-10  object-cover -ml-1  pt-1 px-2 rounded-full hidden dark:block"
+            />
           </Link>
 
           {/* Desktop Links */}
@@ -85,15 +94,21 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className={`text-sm ${pathname === path ? textActive : textLink}`}
+                className={`text-sm ${
+                  pathname === path ? textActive : textLink
+                }`}
               >
-                {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                {path === "/"
+                  ? "Home"
+                  : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
               </Link>
             ))}
             {user && (
               <Link
                 href="/wallet"
-                className={`text-sm ${pathname === "/wallet" ? textActive : textLink}`}
+                className={`text-sm ${
+                  pathname === "/wallet" ? textActive : textLink
+                }`}
               >
                 Wallet
               </Link>
@@ -125,7 +140,10 @@ export function Navbar() {
                         </Button>
                       </DropdownMenuTrigger>
 
-                      <DropdownMenuContent align="end" className={`w-64 ${clayDropdown}`}>
+                      <DropdownMenuContent
+                        align="end"
+                        className={`w-64 ${clayDropdown}`}
+                      >
                         <DropdownMenuLabel className="font-normal px-4 pt-4">
                           <div className="flex flex-col space-y-1">
                             {/* Fallback for empty name */}
@@ -141,10 +159,18 @@ export function Navbar() {
 
                         <DropdownMenuSeparator className="bg-[#F5EFE8] dark:bg-border my-2" />
 
-                        <DropdownMenuItem asChild className="rounded-[1rem] focus:bg-[#FFF0E6] focus:text-[#FF9E75] cursor-pointer p-3 font-bold text-[#5C4D45] dark:text-foreground dark:focus:bg-accent">
-                          <Link href="/wallet" className="flex items-center gap-2">
+                        <DropdownMenuItem
+                          asChild
+                          className="rounded-[1rem] focus:bg-[#FFF0E6] focus:text-[#FF9E75] cursor-pointer p-3 font-bold text-[#5C4D45] dark:text-foreground dark:focus:bg-accent"
+                        >
+                          <Link
+                            href="/wallet"
+                            className="flex items-center gap-2"
+                          >
                             <Wallet className="h-4 w-4" />
-                            <span>Wallet: ₹{user.walletBalance?.toFixed(0) || "0"}</span>
+                            <span>
+                              Wallet: ₹{user.walletBalance?.toFixed(0) || "0"}
+                            </span>
                           </Link>
                         </DropdownMenuItem>
 
@@ -163,7 +189,10 @@ export function Navbar() {
                 ) : (
                   <div className="hidden md:block">
                     <Link href="/login">
-                      <Button className={`rounded-[1rem] font-bold px-5 ${clayBtn}`} size="sm">
+                      <Button
+                        className={`rounded-[1rem] font-bold px-5 ${clayBtn}`}
+                        size="sm"
+                      >
                         Login
                       </Button>
                     </Link>
@@ -180,7 +209,11 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 text-[#5C4D45] dark:text-foreground hover:bg-[#F5EFE8] dark:hover:bg-accent rounded-xl"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </Button>
             </div>
           </div>
@@ -197,7 +230,11 @@ export function Navbar() {
                     key={label}
                     href={path}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block rounded-[1rem] px-4 py-3 font-bold transition-colors ${pathname === path ? "bg-[#FFF0E6] text-[#FF9E75]" : "text-[#5C4D45] hover:bg-[#F5EFE8] dark:text-foreground dark:hover:bg-accent"}`}
+                    className={`block rounded-[1rem] px-4 py-3 font-bold transition-colors ${
+                      pathname === path
+                        ? "bg-[#FFF0E6] text-[#FF9E75]"
+                        : "text-[#5C4D45] hover:bg-[#F5EFE8] dark:text-foreground dark:hover:bg-accent"
+                    }`}
                   >
                     {label}
                   </Link>
@@ -210,11 +247,17 @@ export function Navbar() {
                   <Link
                     href="/wallet"
                     onClick={() => setIsMenuOpen(false)}
-                    className={`block rounded-[1rem] px-4 py-3 font-bold transition-colors ${pathname === "/wallet" ? "bg-[#FFF0E6] text-[#FF9E75]" : "text-[#5C4D45] hover:bg-[#F5EFE8] dark:text-foreground dark:hover:bg-accent"}`}
+                    className={`block rounded-[1rem] px-4 py-3 font-bold transition-colors ${
+                      pathname === "/wallet"
+                        ? "bg-[#FFF0E6] text-[#FF9E75]"
+                        : "text-[#5C4D45] hover:bg-[#F5EFE8] dark:text-foreground dark:hover:bg-accent"
+                    }`}
                   >
                     <div className="flex items-center justify-between">
                       <span>Wallet</span>
-                      <span className="text-xs bg-[#EAF8E6] text-[#4CAF50] px-2 py-1 rounded-md dark:bg-muted dark:text-muted-foreground">₹{user.walletBalance?.toFixed(0) || "0"}</span>
+                      <span className="text-xs bg-[#EAF8E6] text-[#4CAF50] px-2 py-1 rounded-md dark:bg-muted dark:text-muted-foreground">
+                        ₹{user.walletBalance?.toFixed(0) || "0"}
+                      </span>
                     </div>
                   </Link>
                   <button

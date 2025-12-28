@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Apple,
   Candy,
@@ -19,8 +20,6 @@ import {
   Soup,
   Utensils,
 } from "lucide-react";
-
-/* -------------------- ICON POOL -------------------- */
 
 const foodList = [
   Pizza,
@@ -42,56 +41,29 @@ const foodList = [
   Coffee,
 ];
 
-/* -------------------- CONFIG -------------------- */
-
-const COLS = 10;
-
-/* -------------------- STICKER -------------------- */
-
-type StickerProps = {
-  Icon: React.ElementType;
-  index: number;
-};
-
-const Sticker = ({ Icon, index }: StickerProps) => {
-  const rotation = ((index % 5) - 2) * 4;
-
-  return (
-    <div
-      className="flex  text-white items-center justify-center opacity-60"
-      style={{ transform: `rotate(${rotation}deg)` }}
-    >
-      <Icon size={30} strokeWidth={1.75} />
-    </div>
-  );
-};
-
-/* -------------------- PAGE -------------------- */
-
 export default function StickersPage() {
-  return (
-    <div className="dark:bg-background bg-primary w-full h-lvh overflow-hidden absolute z-20">
-      <div className="grid grid-cols-10 grid-rows-6 w-full h-full ">
-        {Array.from({ length: 60 }).map((_, i) => {
-          const Icon = foodList[i % foodList.length];
-          const row = Math.floor(i / COLS);
+  const itemCount = 80;
 
-          if (row % 2 === 1 && i % COLS === COLS - 1) {
-            return <div key={i} />;
-          }
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden bg-primary dark:bg-neutral-900">
+      <div className="grid h-full w-full grid-cols-[repeat(auto-fill,minmax(60px,1fr))] content-center gap-8 opacity-40 p-4">
+        {Array.from({ length: itemCount }).map((_, i) => {
+          const Icon = foodList[i % foodList.length];
+          const rotate = ((i * 13) % 40) - 20;
 
           return (
             <div
               key={i}
-              className={`flex items-center justify-center
-                ${row % 2 === 1 ? "translate-x-10" : ""}
-              `}
+              className="flex items-center justify-center text-primary-foreground/40 dark:text-white/10"
+              style={{ rotate: `${rotate}deg` }}
             >
-              <Sticker Icon={Icon} index={i} />
+              <Icon size={32} strokeWidth={1.5} />
             </div>
           );
         })}
       </div>
+
+      <div className="absolute inset-0 bg-linear-to-t from-primary/90 dark:from-background/90  via-transparent to-primary/90 dark:to-background/90 pointer-events-none" />
     </div>
   );
 }
